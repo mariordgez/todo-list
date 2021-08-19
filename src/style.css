@@ -1,7 +1,30 @@
+body {
+  text-align: center;
+  align-items: center;
+}
 .todo {
   display: flex;
+  justify-content: space-around;
+}
+
+.todo-container {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .todo-item {
   list-style: none;
+  flex: 1;
+}
+
+.todo-btn {
+  background-color: white;
+  border: none;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }

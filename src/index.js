@@ -5,11 +5,6 @@ import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 
-const todoInput = document.querySelector('.todo-input');
-const todoAdd = document.querySelector('.todo-add');
-const todoList = document.querySelector('.todo-list');
-const taskArr = [];
-todoAdd.addEventListener('click', todo);
 class Task {
   constructor(description, index) {
     this.description = description;
@@ -18,26 +13,45 @@ class Task {
   }
 }
 
+const todoInput = document.querySelector('.todo-input');
+const todoAdd = document.querySelector('.todo-add');
+const todoList = document.querySelector('.todo-list');
+const task1 = new Task('hello', 0);
+const task2 = new Task('hello', 1);
+const taskArr = [task1, task2];
+
+todoAdd.addEventListener('click', todo);
+
 function todo(event) {
   event.preventDefault();
 
   const newTask = new Task(todoInput.value, taskArr.length);
   taskArr.push(newTask);
   console.log(taskArr);
-  ui(newTask);
+  addToUI(newTask);
 }
 
-function ui(task) {
+function addToUI(task) {
   const todoDiv = document.createElement('div');
   todoDiv.classList.add('todo');
+  const todoCheck = document.createElement('input');
+  todoCheck.type = 'checkbox';
+  todoDiv.appendChild(todoCheck);
 
   const todoLi = document.createElement('li');
   todoLi.classList.add('todo-item');
   todoLi.innerText = task.description;
   todoDiv.appendChild(todoLi);
-  const todoCheck = document.createElement('input');
-  todoCheck.type = 'checkbox';
-  todoDiv.appendChild(todoCheck);
-  // Lodash, now imported by this script
+
+  const todoDots = document.createElement('button');
+  todoDots.classList.add('todo-btn');
+  todoDots.innerHTML = '<i class="fas fa-ellipsis-v"></i>';
+  todoDiv.appendChild(todoDots);
   todoList.appendChild(todoDiv);
 }
+function uiList(arr) {
+  arr.forEach((task) => {
+    addToUI(task);
+  });
+}
+uiList(taskArr);
