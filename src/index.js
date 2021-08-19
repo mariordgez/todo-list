@@ -5,6 +5,10 @@ import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 
+const todoInput = document.querySelector('.todo-input');
+const todoAdd = document.querySelector('.todo-add');
+const todoList = document.querySelector('.todo-list');
+
 function component() {
   const element = document.createElement('div');
 
