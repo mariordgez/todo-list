@@ -2,6 +2,7 @@ body {
   text-align: center;
   align-items: center;
 }
+
 .todo {
   display: flex;
   justify-content: space-around;

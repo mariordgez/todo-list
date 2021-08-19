@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import './style.css';
 import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
@@ -20,17 +19,6 @@ const task1 = new Task('hello', 0);
 const task2 = new Task('hello', 1);
 const taskArr = [task1, task2];
 
-todoAdd.addEventListener('click', todo);
-
-function todo(event) {
-  event.preventDefault();
-
-  const newTask = new Task(todoInput.value, taskArr.length);
-  taskArr.push(newTask);
-  console.log(taskArr);
-  addToUI(newTask);
-}
-
 function addToUI(task) {
   const todoDiv = document.createElement('div');
   todoDiv.classList.add('todo');
@@ -49,6 +37,18 @@ function addToUI(task) {
   todoDiv.appendChild(todoDots);
   todoList.appendChild(todoDiv);
 }
+
+function todo(event) {
+  event.preventDefault();
+
+  const newTask = new Task(todoInput.value, taskArr.length);
+  taskArr.push(newTask);
+  console.log(taskArr);
+  addToUI(newTask);
+}
+
+todoAdd.addEventListener('click', todo);
+
 function uiList(arr) {
   arr.forEach((task) => {
     addToUI(task);
