@@ -2,30 +2,26 @@
 
 # To do list
 
-The purpose of this project is to introduce us to Javascript while adding and modifying elements of DOM.
+The purpose of this project is to create a to do list using webpack.
 
 ## Project specifications
 
-    Create a collection that keeps a list of books (hint: you can use an array of objects for that).
-    Create a function to add a new book to the collection, with title and author.
-    Create a function to remove a book from the collection (hint: you can use the array filter() method).
-    Display all books saved in the collection in the top part of the page.
-    Make sure that when a user clicks the "Add" button:
-        A new book is added to the collection.
-        The new book is displayed in the page.
-    Make sure that when a user clicks the "Remove" button:
-        The correct book is removed from the collection.
-        The correct book dissapears from the page.
-    Make sure that data is preserved in the browser's memory by using localStorage.
-    To debug your application, you can use console.log(). Remember to remove debugging code before pushing your code to the remote repository.
-    Don't use any library or framework, use only plain JavaScript.
-    You need to use pair-programming for this project. We will check to see if both partners submitted code by looking at the commit history for each project. Therefore you need to use only one repository for your pair-programming group.
+    Set up a new project with webpack that is based on the webpack exercise you have already completed.
+    Create an index.html file and write your HTML markup here. Create an empty To Do List placeholder (<div> or <ul> element). The index.html file must be set as a template using the HTML Webpack Plugin.
+    Create an index.js file and set an array of some simple to do tasks (array of objects). Each task object should contain three keys:
+        description [string].
+        completed [bool].
+        index: [number].
+    Write a function to iterate over the tasks array and populate an HTML list item element for each task.
+    On page load render the dynamically created list of tasks in the dedicated placeholder. The list should apear in order of the index values for each task.
+    Create a style.css and set rules for the To Do List. CSS must be loaded by Webpack Style/CSS Loader. Your list should be a clone of the part of the minimalist project captured in the video below.
 
 ## Built With
 
 - HTML
 - Javascript
 - Technologies used such as: Linters (Lighthouse, Webhint, Stylelint), Extensions (Live server, Prettier), Git, bootstrap, among others.
+  -Webpack
 
 ## Authors
 
