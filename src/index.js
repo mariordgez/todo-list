@@ -9,14 +9,20 @@ const todoInput = document.querySelector('.todo-input');
 const todoAdd = document.querySelector('.todo-add');
 const todoList = document.querySelector('.todo-list');
 
-function component() {
-  const element = document.createElement('div');
+todoAdd.addEventListener('click', todo);
 
+function todo(event) {
+  event.preventDefault();
+
+  const todoDiv = document.createElement('div');
+  const todoLi = document.createElement('li');
+  todoLi.innerText = todoInput.innerText.value;
+  todoDiv.appendChild(todoLi);
+  const todoCheck = document.createElement('button');
+  todoCheck.type = 'checkbox';
+  todoDiv.appendChild(todoCheck);
   // Lodash, now imported by this script
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  element.classList.add('hello');
-
-  return element;
+  todoList.appendChild(todoDiv);
 }
 
 document.body.appendChild(component());
