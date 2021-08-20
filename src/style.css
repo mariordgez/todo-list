@@ -37,3 +37,11 @@ body {
 .todo-hidden {
   display: none;
 }
+
+.todo-edit {
+  display: none;
+}
+
+.fa-ellipsis-v {
+  pointer-events: none;
+}

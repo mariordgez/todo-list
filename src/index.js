@@ -14,6 +14,7 @@ document.addEventListener(
   'DOMContentLoaded',
   UI.displayList(Storage.getList().list)
 );
+document.addEventListener('DOMContentLoaded', UI.buttonTask());
 
 const todo = (event) => {
   event.preventDefault();

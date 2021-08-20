@@ -5,8 +5,10 @@ const todoList = document.querySelector('.todo-list');
 
 export default class UI {
   static addToUI(task) {
+    const todoAllDiv = document.createElement('div');
     const todoDiv = document.createElement('div');
     todoDiv.classList.add('todo');
+    todoDiv.classList.add('todo-li');
     const todoCheck = document.createElement('input');
     todoCheck.type = 'checkbox';
     todoCheck.classList.add('todo-check');
@@ -29,7 +31,25 @@ export default class UI {
     todoDots.classList.add('todo-btn');
     todoDots.innerHTML = '<i class="fas fa-ellipsis-v"></i>';
     todoDiv.appendChild(todoDots);
-    todoList.appendChild(todoDiv);
+    todoAllDiv.appendChild(todoDiv);
+    // Edit section
+    const todoDivEdit = document.createElement('div');
+    todoDivEdit.classList.add('todo-edit');
+    todoDivEdit.classList.add('todo');
+    const todoInput = document.createElement('input');
+    todoInput.type = 'text';
+    todoInput.classList.add('todo-input');
+    todoDivEdit.appendChild(todoInput);
+    const todoEdit = document.createElement('button');
+    todoEdit.classList.add('todo-btn-edit');
+    todoEdit.innerHTML = '<i class="fas fa-edit"></i>';
+    todoDivEdit.appendChild(todoEdit);
+    const todoDelete = document.createElement('button');
+    todoDelete.classList.add('todo-btn-edit');
+    todoDelete.innerHTML = '<i class="fas fa-trash"></i>';
+    todoDivEdit.appendChild(todoDelete);
+    todoAllDiv.appendChild(todoDivEdit);
+    todoList.appendChild(todoAllDiv);
     UI.checkTask();
   }
 
@@ -71,6 +91,18 @@ export default class UI {
           });
           Storage.saveList(newList);
         }
+      });
+    });
+  }
+
+  static buttonTask() {
+    document.querySelectorAll('.todo-btn').forEach((button) => {
+      button.addEventListener('click', (e) => {
+        console.log(e.target.parentElement.parentElement.children[1]);
+        e.target.parentElement.parentElement.children[1].classList.toggle(
+          'todo-edit'
+        );
+        e.target.parentElement.classList.toggle('todo-edit');
       });
     });
   }
