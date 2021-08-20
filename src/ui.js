@@ -68,7 +68,6 @@ export default class UI {
           const newList = new TaskList();
           e.target.parentElement.classList.add('checked');
           Storage.getList().list.forEach((task) => {
-            console.log(task.index);
             if (
               String(task.index) ===
               e.target.parentElement.children[2].innerText.slice(0)
@@ -99,7 +98,6 @@ export default class UI {
   static buttonTask() {
     document.querySelectorAll('.todo-btn').forEach((button) => {
       button.addEventListener('click', (e) => {
-        console.log(e.target.parentElement.parentElement.children[1]);
         e.target.parentElement.parentElement.children[1].classList.toggle(
           'todo-edit'
         );
@@ -113,20 +111,15 @@ export default class UI {
   static editTask() {
     document.querySelectorAll('.todo-btn-edit').forEach((button) => {
       button.addEventListener('click', (e) => {
-        console.log(
-          e.target.parentElement.parentElement.children[0].children[2].innerText
-        );
-
         const newDescription = e.target.parentElement.children[0].value;
         const taskIndex =
           e.target.parentElement.parentElement.children[0].children[2]
             .innerText;
-        const updatedTask = new Task(newDescription, taskIndex);
+        const uTask = new Task(newDescription, taskIndex);
         const newList = new TaskList();
         Storage.getList().list.forEach((task) => {
-          console.log(task.index);
-          if (String(task.index) === updatedTask.index) {
-            task.description = updatedTask.description;
+          if (String(task.index) === uTask.index) {
+            task.description = uTask.description;
           }
           newList.addTask(task);
         });
@@ -136,7 +129,7 @@ export default class UI {
           'todo-edit'
         );
         e.target.parentElement.parentElement.children[0].children[1].innerText =
-          updatedTask.description;
+          uTask.description;
       });
     });
   }
@@ -144,12 +137,10 @@ export default class UI {
   static deleteTask() {
     document.querySelectorAll('.todo-btn-delete').forEach((button) => {
       button.addEventListener('click', (e) => {
-        console.log(
-          e.target.parentElement.parentElement.children[0].children[2].innerText
-        );
-
         const taskIndex = parseInt(
-          e.target.parentElement.parentElement.children[0].children[2].innerText
+          e.target.parentElement.parentElement.children[0].children[2]
+            .innerText,
+          10
         );
         Storage.deleteTask(taskIndex);
         e.target.parentElement.parentElement.remove();

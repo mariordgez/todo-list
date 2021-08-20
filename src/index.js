@@ -13,7 +13,7 @@ const todoClear = document.querySelector('.todo-clear');
 
 document.addEventListener(
   'DOMContentLoaded',
-  UI.displayList(Storage.getList().list)
+  UI.displayList(Storage.getList().list),
 );
 document.addEventListener('DOMContentLoaded', UI.buttonTask());
 

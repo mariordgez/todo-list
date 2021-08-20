@@ -12,11 +12,11 @@ export default class Storage {
     }
     const taskList = Object.assign(
       new TaskList(),
-      JSON.parse(localStorage.getItem('TaskList'))
+      JSON.parse(localStorage.getItem('TaskList')),
     );
 
     taskList.setList(
-      taskList.getTasks().map((task) => Object.assign(new Task(), task))
+      taskList.getTasks().map((task) => Object.assign(new Task(), task)),
     );
 
     return taskList;
@@ -31,14 +31,12 @@ export default class Storage {
   static deleteTask(index) {
     const oldList = Storage.getList();
     oldList.removeTask(index);
-    console.log(Storage.getList());
     Storage.saveList(oldList);
   }
 
   static deleteCompleted() {
     const oldList = Storage.getList();
     oldList.removeCompleted();
-    console.log(oldList);
     Storage.saveList(oldList);
   }
 }
