@@ -46,7 +46,7 @@ export default class UI {
     todoEdit.innerHTML = '<i class="fas fa-edit"></i>';
     todoDivEdit.appendChild(todoEdit);
     const todoDelete = document.createElement('button');
-    todoDelete.classList.add('todo-btn-edit');
+    todoDelete.classList.add('todo-btn-delete');
     todoDelete.innerHTML = '<i class="fas fa-trash"></i>';
     todoDivEdit.appendChild(todoDelete);
     todoAllDiv.appendChild(todoDivEdit);
@@ -107,6 +107,7 @@ export default class UI {
       });
     });
     this.editTask();
+    this.deleteTask();
   }
 
   static editTask() {
@@ -136,6 +137,22 @@ export default class UI {
         );
         e.target.parentElement.parentElement.children[0].children[1].innerText =
           updatedTask.description;
+      });
+    });
+  }
+
+  static deleteTask() {
+    document.querySelectorAll('.todo-btn-delete').forEach((button) => {
+      button.addEventListener('click', (e) => {
+        console.log(
+          e.target.parentElement.parentElement.children[0].children[2].innerText
+        );
+
+        const taskIndex = parseInt(
+          e.target.parentElement.parentElement.children[0].children[2].innerText
+        );
+        Storage.deleteTask(taskIndex);
+        e.target.parentElement.parentElement.remove();
       });
     });
   }
