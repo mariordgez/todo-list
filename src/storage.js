@@ -12,7 +12,7 @@ export default class Storage {
     }
     const taskList = Object.assign(
       new TaskList(),
-      JSON.parse(localStorage.getItem('Taskist'))
+      JSON.parse(localStorage.getItem('TaskList'))
     );
 
     taskList.setList(
