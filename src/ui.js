@@ -11,6 +11,10 @@ export default class UI {
     const todoCheck = document.createElement('input');
     todoCheck.type = 'checkbox';
     todoCheck.classList.add('todo-check');
+    if (task.checked === true) {
+      todoCheck.checked = true;
+      todoDiv.classList.add('checked');
+    }
     todoDiv.appendChild(todoCheck);
 
     const todoLi = document.createElement('li');
@@ -23,6 +27,7 @@ export default class UI {
     todoDots.innerHTML = '<i class="fas fa-ellipsis-v"></i>';
     todoDiv.appendChild(todoDots);
     todoList.appendChild(todoDiv);
+    UI.checkTask();
   }
 
   static displayList = (arr) => {
@@ -37,7 +42,6 @@ export default class UI {
         if (e.target.checked) {
           const newList = new TaskList();
           e.target.parentElement.classList.add('checked');
-          console.log(e.target.parentElement.children[1].innerText.slice(0));
           Storage.getList().list.forEach((task) => {
             if (
               task.description ===
@@ -46,11 +50,21 @@ export default class UI {
               task.checked = true;
             }
             newList.addTask(task);
-            console.log(newList);
           });
           Storage.saveList(newList);
         } else {
           e.target.parentElement.classList.remove('checked');
+          const newList = new TaskList();
+          Storage.getList().list.forEach((task) => {
+            if (
+              task.description ===
+              e.target.parentElement.children[1].innerText.slice(0)
+            ) {
+              task.checked = false;
+            }
+            newList.addTask(task);
+          });
+          Storage.saveList(newList);
         }
       });
     });
