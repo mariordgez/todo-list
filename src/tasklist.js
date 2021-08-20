@@ -13,7 +13,12 @@ export default class TaskList {
   }
 
   static arrayRemove(arr, index) {
+    let newIndex = 1;
     const result = arr.filter((task) => task.index != index);
+    result.forEach((task) => {
+      task.index = newIndex;
+      newIndex += 1;
+    });
     console.log(result);
     return result;
   }
