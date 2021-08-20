@@ -20,6 +20,10 @@ export default class UI {
     todoLi.classList.add('todo-item');
     todoLi.innerText = task.description;
     todoDiv.appendChild(todoLi);
+    const todoHidden = document.createElement('div');
+    todoHidden.classList.add('todo-hidden');
+    todoHidden.innerText = task.index;
+    todoDiv.appendChild(todoHidden);
 
     const todoDots = document.createElement('button');
     todoDots.classList.add('todo-btn');
@@ -43,9 +47,10 @@ export default class UI {
           const newList = new TaskList();
           e.target.parentElement.classList.add('checked');
           Storage.getList().list.forEach((task) => {
+            console.log(task.index);
             if (
-              task.description
-              === e.target.parentElement.children[1].innerText.slice(0)
+              String(task.index) ===
+              e.target.parentElement.children[2].innerText.slice(0)
             ) {
               task.checked = true;
             }
@@ -57,8 +62,8 @@ export default class UI {
           const newList = new TaskList();
           Storage.getList().list.forEach((task) => {
             if (
-              task.description
-              === e.target.parentElement.children[1].innerText.slice(0)
+              String(task.index) ===
+              e.target.parentElement.children[2].innerText.slice(0)
             ) {
               task.checked = false;
             }

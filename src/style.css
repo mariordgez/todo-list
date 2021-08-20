@@ -33,3 +33,7 @@ body {
 .checked {
   text-decoration: line-through;
 }
+
+.todo-hidden {
+  display: none;
+}
