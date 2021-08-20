@@ -9,6 +9,7 @@ import UI from './ui.js';
 
 const todoInput = document.querySelector('.todo-input');
 const todoAdd = document.querySelector('.todo-add');
+const todoClear = document.querySelector('.todo-clear');
 
 document.addEventListener(
   'DOMContentLoaded',
@@ -27,4 +28,11 @@ const todo = (event) => {
   UI.buttonTask();
 };
 
+const todoC = (event) => {
+  event.preventDefault();
+  Storage.deleteCompleted();
+  window.location.reload();
+};
+
 todoAdd.addEventListener('click', todo);
+todoClear.addEventListener('click', todoC);

@@ -34,4 +34,11 @@ export default class Storage {
     console.log(Storage.getList());
     Storage.saveList(oldList);
   }
+
+  static deleteCompleted() {
+    const oldList = Storage.getList();
+    oldList.removeCompleted();
+    console.log(oldList);
+    Storage.saveList(oldList);
+  }
 }

@@ -9,7 +9,6 @@ export default class TaskList {
 
   removeTask(index) {
     this.list = TaskList.arrayRemove(this.list, index);
-    console.log(this.list);
   }
 
   static arrayRemove(arr, index) {
@@ -19,8 +18,18 @@ export default class TaskList {
       task.index = newIndex;
       newIndex += 1;
     });
-    console.log(result);
     return result;
+  }
+
+  removeCompleted() {
+    let newIndex = 1;
+    const result = this.list.filter((task) => task.checked === false);
+    result.forEach((task) => {
+      task.index = newIndex;
+      newIndex += 1;
+    });
+    console.log(result);
+    this.list = result;
   }
 
   setList(list) {
