@@ -28,9 +28,15 @@ export default class Storage {
     Storage.saveList(oldList);
   }
 
-  static deleteTask(task) {
+  static deleteTask(index) {
     const oldList = Storage.getList();
-    oldList.removeTask(task);
+    oldList.removeTask(index);
+    Storage.saveList(oldList);
+  }
+
+  static deleteCompleted() {
+    const oldList = Storage.getList();
+    oldList.removeCompleted();
     Storage.saveList(oldList);
   }
 }

@@ -33,3 +33,17 @@ body {
 .checked {
   text-decoration: line-through;
 }
+
+.todo-hidden {
+  display: none;
+}
+
+.todo-edit {
+  display: none;
+}
+
+.fa-ellipsis-v,
+.fa-edit,
+.fa-trash {
+  pointer-events: none;
+}

@@ -7,12 +7,28 @@ export default class TaskList {
     this.list.push(task);
   }
 
-  removeTask(task) {
-    this.list = TaskList.arrayRemove(this.list, task);
+  removeTask(index) {
+    this.list = TaskList.arrayRemove(this.list, index);
   }
 
-  static arrayRemove(arr, task) {
-    return arr.filter((ele) => !(ele.index === task.index));
+  static arrayRemove(arr, index) {
+    let newIndex = 1;
+    const result = arr.filter((task) => task.index !== index);
+    result.forEach((task) => {
+      task.index = newIndex;
+      newIndex += 1;
+    });
+    return result;
+  }
+
+  removeCompleted() {
+    let newIndex = 1;
+    const result = this.list.filter((task) => task.checked === false);
+    result.forEach((task) => {
+      task.index = newIndex;
+      newIndex += 1;
+    });
+    this.list = result;
   }
 
   setList(list) {
