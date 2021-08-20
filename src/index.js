@@ -19,7 +19,7 @@ const task1 = new Task('hello', 0);
 const task2 = new Task('hello', 1);
 const taskArr = [task1, task2];
 
-function addToUI(task) {
+const addToUI = (task) => {
   const todoDiv = document.createElement('div');
   todoDiv.classList.add('todo');
   const todoCheck = document.createElement('input');
@@ -36,22 +36,22 @@ function addToUI(task) {
   todoDots.innerHTML = '<i class="fas fa-ellipsis-v"></i>';
   todoDiv.appendChild(todoDots);
   todoList.appendChild(todoDiv);
-}
+};
 
-function todo(event) {
+const todo = (event) => {
   event.preventDefault();
 
   const newTask = new Task(todoInput.value, taskArr.length);
   taskArr.push(newTask);
   console.log(taskArr);
   addToUI(newTask);
-}
+};
 
 todoAdd.addEventListener('click', todo);
 
-function uiList(arr) {
+const uiList = (arr) => {
   arr.forEach((task) => {
     addToUI(task);
   });
-}
+};
 uiList(taskArr);
