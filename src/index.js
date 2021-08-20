@@ -3,14 +3,7 @@ import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
-
-class Task {
-  constructor(description, index) {
-    this.description = description;
-    this.index = index;
-    this.checked = false;
-  }
-}
+import Task from './task.js';
 
 const todoInput = document.querySelector('.todo-input');
 const todoAdd = document.querySelector('.todo-add');
