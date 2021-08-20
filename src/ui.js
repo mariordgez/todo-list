@@ -1,4 +1,5 @@
 import Storage from './storage.js';
+import Task from './task.js';
 import TaskList from './tasklist.js';
 
 const todoList = document.querySelector('.todo-list');
@@ -103,6 +104,38 @@ export default class UI {
           'todo-edit'
         );
         e.target.parentElement.classList.toggle('todo-edit');
+      });
+    });
+    this.editTask();
+  }
+
+  static editTask() {
+    document.querySelectorAll('.todo-btn-edit').forEach((button) => {
+      button.addEventListener('click', (e) => {
+        console.log(
+          e.target.parentElement.parentElement.children[0].children[2].innerText
+        );
+
+        const newDescription = e.target.parentElement.children[0].value;
+        const taskIndex =
+          e.target.parentElement.parentElement.children[0].children[2]
+            .innerText;
+        const updatedTask = new Task(newDescription, taskIndex);
+        const newList = new TaskList();
+        Storage.getList().list.forEach((task) => {
+          console.log(task.index);
+          if (String(task.index) === updatedTask.index) {
+            task.description = updatedTask.description;
+          }
+          newList.addTask(task);
+        });
+        Storage.saveList(newList);
+        e.target.parentElement.classList.toggle('todo-edit');
+        e.target.parentElement.parentElement.children[0].classList.toggle(
+          'todo-edit'
+        );
+        e.target.parentElement.parentElement.children[0].children[1].innerText =
+          updatedTask.description;
       });
     });
   }

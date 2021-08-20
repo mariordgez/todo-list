@@ -24,6 +24,7 @@ const todo = (event) => {
 
   UI.addToUI(newTask);
   UI.checkTask();
+  UI.buttonTask();
 };
 
 todoAdd.addEventListener('click', todo);
