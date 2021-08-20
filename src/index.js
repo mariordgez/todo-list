@@ -14,7 +14,7 @@ const taskArr = [];
 
 document.addEventListener(
   'DOMContentLoaded',
-  UI.displayList(Storage.getList().list)
+  UI.displayList(Storage.getList().list),
 );
 
 const todo = (event) => {

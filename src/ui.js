@@ -1,4 +1,3 @@
-import Task from './task.js';
 import Storage from './storage.js';
 import TaskList from './tasklist.js';
 
@@ -36,6 +35,7 @@ export default class UI {
       UI.checkTask();
     });
   };
+
   static checkTask() {
     document.querySelectorAll('.todo-check').forEach((checkbox) => {
       checkbox.addEventListener('change', (e) => {
@@ -44,8 +44,8 @@ export default class UI {
           e.target.parentElement.classList.add('checked');
           Storage.getList().list.forEach((task) => {
             if (
-              task.description ===
-              e.target.parentElement.children[1].innerText.slice(0)
+              task.description
+              === e.target.parentElement.children[1].innerText.slice(0)
             ) {
               task.checked = true;
             }
@@ -57,8 +57,8 @@ export default class UI {
           const newList = new TaskList();
           Storage.getList().list.forEach((task) => {
             if (
-              task.description ===
-              e.target.parentElement.children[1].innerText.slice(0)
+              task.description
+              === e.target.parentElement.children[1].innerText.slice(0)
             ) {
               task.checked = false;
             }
