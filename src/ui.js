@@ -69,8 +69,8 @@ export default class UI {
           e.target.parentElement.classList.add('checked');
           Storage.getList().list.forEach((task) => {
             if (
-              String(task.index) ===
-              e.target.parentElement.children[2].innerText.slice(0)
+              String(task.index)
+              === e.target.parentElement.children[2].innerText.slice(0)
             ) {
               task.checked = true;
             }
@@ -82,8 +82,8 @@ export default class UI {
           const newList = new TaskList();
           Storage.getList().list.forEach((task) => {
             if (
-              String(task.index) ===
-              e.target.parentElement.children[2].innerText.slice(0)
+              String(task.index)
+              === e.target.parentElement.children[2].innerText.slice(0)
             ) {
               task.checked = false;
             }
@@ -99,7 +99,7 @@ export default class UI {
     document.querySelectorAll('.todo-btn').forEach((button) => {
       button.addEventListener('click', (e) => {
         e.target.parentElement.parentElement.children[1].classList.toggle(
-          'todo-edit'
+          'todo-edit',
         );
         e.target.parentElement.classList.toggle('todo-edit');
       });
@@ -112,9 +112,8 @@ export default class UI {
     document.querySelectorAll('.todo-btn-edit').forEach((button) => {
       button.addEventListener('click', (e) => {
         const newDescription = e.target.parentElement.children[0].value;
-        const taskIndex =
-          e.target.parentElement.parentElement.children[0].children[2]
-            .innerText;
+        const taskIndex = e.target.parentElement.parentElement.children[0].children[2]
+          .innerText;
         const uTask = new Task(newDescription, taskIndex);
         const newList = new TaskList();
         Storage.getList().list.forEach((task) => {
@@ -126,10 +125,9 @@ export default class UI {
         Storage.saveList(newList);
         e.target.parentElement.classList.toggle('todo-edit');
         e.target.parentElement.parentElement.children[0].classList.toggle(
-          'todo-edit'
+          'todo-edit',
         );
-        e.target.parentElement.parentElement.children[0].children[1].innerText =
-          uTask.description;
+        e.target.parentElement.parentElement.children[0].children[1].innerText = uTask.description;
       });
     });
   }
@@ -140,7 +138,7 @@ export default class UI {
         const taskIndex = parseInt(
           e.target.parentElement.parentElement.children[0].children[2]
             .innerText,
-          10
+          10,
         );
         Storage.deleteTask(taskIndex);
         e.target.parentElement.parentElement.remove();
