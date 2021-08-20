@@ -4,4 +4,9 @@ export default class Task {
     this.index = index;
     this.checked = false;
   }
+
+  static check(task) {
+    if (task.checked === true) task.checked = false;
+    else task.checked = true;
+  }
 }

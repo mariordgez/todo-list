@@ -29,3 +29,7 @@ body {
   margin: 4px 2px;
   cursor: pointer;
 }
+
+.checked {
+  text-decoration: line-through;
+}

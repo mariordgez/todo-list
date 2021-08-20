@@ -14,7 +14,7 @@ const taskArr = [];
 
 document.addEventListener(
   'DOMContentLoaded',
-  UI.uiList(Storage.getList().list)
+  UI.displayList(Storage.getList().list)
 );
 
 const todo = (event) => {
@@ -23,8 +23,9 @@ const todo = (event) => {
   const newTask = new Task(todoInput.value, taskArr.length);
   taskArr.push(newTask);
   Storage.saveTask(newTask);
-  console.log(taskArr);
+
   UI.addToUI(newTask);
+  UI.checkTask();
 };
 
 todoAdd.addEventListener('click', todo);
