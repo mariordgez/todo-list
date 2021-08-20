@@ -1,7 +1,6 @@
 import Task from './task.js';
 import Storage from './storage.js';
 
-const bookTable = document.querySelector('.book_holder');
 const todoList = document.querySelector('.todo-list');
 
 export default class UI {
@@ -24,24 +23,9 @@ export default class UI {
     todoList.appendChild(todoDiv);
   }
 
-  static displayList(list) {
-    list.forEach((book) => {
-      UI.addToUI(book);
-      UI.deleteBook();
+  static uiList = (arr) => {
+    arr.forEach((task) => {
+      UI.addToUI(task);
     });
-  }
-
-  static deleteBook() {
-    document.querySelectorAll('.remove_book').forEach((button) => {
-      button.addEventListener('click', (e) => {
-        e.target.parentElement.remove();
-        const deleteTitle =
-          e.target.parentElement.children[0].innerText.slice(0);
-        const deleteAuthor =
-          e.target.parentElement.children[1].innerText.slice(4);
-        const bookDelete = new Book(deleteTitle, deleteAuthor);
-        Storage.deleteBook(bookDelete);
-      });
-    });
-  }
+  };
 }
